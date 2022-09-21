@@ -64,7 +64,5 @@ startBtn.addEventListener("click", (e) => {
 
 // if user clicks on 'restart' button restart timer and cycle
 restartBtn.addEventListener("click", (e) => {
-  minutes = 25;
-  seconds = 0;
-  cycle = 0;
+  location.reload();
 });
