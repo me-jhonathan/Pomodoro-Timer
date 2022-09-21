@@ -1,6 +1,6 @@
 // get restart/start button from index.html
 const startBtn = document.querySelector("#startBtn");
-const restartBtn = document.querySelector("#resetBtn");
+const restartBtn = document.querySelector("#restartBtn");
 
 // different timers depending on cycle
 const runTime = 25;
@@ -53,8 +53,9 @@ startBtn.addEventListener("click", (e) => {
   setInterval(countDown, 1000);
 });
 
-// if user clicks on 'restart' button restart timer
+// if user clicks on 'restart' button restart timer and cycle
 restartBtn.addEventListener("click", (e) => {
   minutes = 25;
   seconds = 0;
+  cycle = 0;
 });
