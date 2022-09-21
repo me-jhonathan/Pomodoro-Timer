@@ -1,3 +1,7 @@
+// get restart/start button from index.html
+const startBtn = document.querySelector("#startBtn");
+const restartBtn = document.querySelector("#resetBtn");
+
 let minutes = 25;
 let seconds = 0;
 
@@ -21,5 +25,15 @@ function countDown() {
   seconds--;
 }
 
-// refresh every second
-setInterval(countDown, 1000);
+// if user clicks on 'start' button start timer
+startBtn.addEventListener("click", (e) => {
+  startBtn.disabled = true;
+  // refresh every second
+  setInterval(countDown, 1000);
+});
+
+// if user clicks on 'restart' button restart timer
+restartBtn.addEventListener("click", (e) => {
+  minutes = 25;
+  seconds = 0;
+});
