@@ -7,7 +7,7 @@ const mainCircle = document.querySelector("#mainCircle");
 const minuteCircle = document.querySelector("#minuteCircle");
 
 // different timers depending on cycle
-const runTime = 25;
+const runTime = 24;
 const breakTime = 5;
 const longBreakTime = 30;
 
@@ -15,7 +15,7 @@ const longBreakTime = 30;
 let cycle = 0;
 
 let minutes = runTime;
-let seconds = 0;
+let seconds = 59;
 
 // add leading zero to display numbers
 const zeroPad = (num, places) => String(num).padStart(places, "0");
@@ -37,7 +37,7 @@ function countDown() {
       }
       // start run cycle
       else {
-        minutes = runTime - 1;
+        minutes = runTime;
       }
       cycle++;
     }
@@ -48,6 +48,11 @@ function countDown() {
     zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
 
   seconds--;
+
+  // refresh every second
+  setTimeout(() => {
+    countDown();
+  }, 1000);
 }
 
 // if user clicks on 'start' button start timer
@@ -58,8 +63,8 @@ startBtn.addEventListener("click", (e) => {
   mainCircle.classList.add("start");
   minuteCircle.classList.add("start");
 
-  // refresh every second
-  setInterval(countDown, 1000);
+  // start timer
+  countDown();
 });
 
 // if user clicks on 'restart' button restart timer and cycle
