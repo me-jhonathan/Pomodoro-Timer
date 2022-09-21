@@ -1,7 +1,10 @@
 // get restart/start button from index.html
 const startBtn = document.querySelector("#startBtn");
 const restartBtn = document.querySelector("#restartBtn");
-const fillInCircle = document.querySelector("#fillInCircle");
+
+// get the circles to begin their timers
+const mainCircle = document.querySelector("#mainCircle");
+const minuteCircle = document.querySelector("#minuteCircle");
 
 // different timers depending on cycle
 const runTime = 25;
@@ -50,6 +53,11 @@ function countDown() {
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   startBtn.disabled = true;
+
+  // start the circle timers
+  mainCircle.classList.add("start");
+  minuteCircle.classList.add("start");
+
   // refresh every second
   setInterval(countDown, 1000);
 });

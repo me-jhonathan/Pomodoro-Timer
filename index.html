@@ -8,66 +8,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <svg id="fillInCircle" width="300" height="300">
-      <svg>
-        <circle
-          cx="150"
-          cy="150"
-          r="130"
-          style="
-            stroke: rgb(231, 147, 147);
-            stroke-width: 18;
-            fill: transparent;
-          "
-        />
-
-        <path
-          style="
-            stroke: #c41414;
-            stroke-dasharray: 820;
-            stroke-dashoffset: 820;
-            stroke-width: 18;
-            fill: transparent;
-          "
-          d="M150,150 m0,-130 a 130,130 0 0,1 0,260 a 130,130 0 0,1 0,-260"
-        >
-          <animate
-            attributeName="stroke-dashoffset"
-            dur="1500s"
-            to="-820"
-            repeatCount="indefinite"
-          />
-        </path>
-      </svg>
+    <svg id="mainSVG" width="300" height="300">
+      <circle
+        cx="150"
+        cy="150"
+        r="130"
+        style="stroke: rgb(231, 147, 147); stroke-width: 18; fill: transparent"
+      />
+      <path
+        id="mainCircle"
+        d="M150,150 m0,-130 a 130,130 0 0,1 0,260 a 130,130 0 0,1 0,-260"
+      ></path>
     </svg>
-    <svg id="fillInCircle" width="350" height="350">
-      <svg>
-        <circle
-          cx="175"
-          cy="175"
-          r="150"
-          style="stroke: rgb(231, 147, 147); stroke-width: 8; fill: transparent"
-        />
 
-        <path
-          style="
-            stroke: #c41414;
-            stroke-dasharray: 950;
-            stroke-dashoffset: 950;
-            stroke-width: 8;
-            fill: transparent;
-          "
-          d="M175,175 m0,-150 a 150,150 0 0,1 0,300 a 150,150 0 0,1 0,-300"
-        >
-          <animate
-            attributeName="stroke-dashoffset"
-            dur="60s"
-            to="-950"
-            repeatCount="indefinite"
-          />
-        </path>
-      </svg>
+    <svg id="mainSVG" width="350" height="350">
+      <circle
+        cx="175"
+        cy="175"
+        r="150"
+        style="stroke: rgb(231, 147, 147); stroke-width: 8; fill: transparent"
+      />
+      <path
+        id="minuteCircle"
+        d="M175,175 m0,-150 a 150,150 0 0,1 0,300 a 150,150 0 0,1 0,-300"
+      ></path>
     </svg>
+
     <div class="container">
       <div class="time">25:00</div>
       <div class="controls">

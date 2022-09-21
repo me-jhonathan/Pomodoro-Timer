@@ -18,11 +18,53 @@ body {
 .controls {
   text-align: center;
 }
-#fillInCircle {
+#startBtn {
+  background-color: rgb(245, 28, 28);
+}
+#mainSVG {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
+}
+#mainCircle {
+  stroke: #c41414;
+  stroke-dasharray: 820;
+  stroke-dashoffset: 820;
+  stroke-width: 18;
+  fill: transparent;
+}
+#mainCircle.start {
+  animation: fillMain 1500s linear infinite forwards;
+}
+
+@keyframes fillMain {
+  0% {
+    stroke-dashoffset: 820;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+#minuteCircle {
+  stroke: #a71f1f;
+  stroke-dasharray: 950;
+  stroke-dashoffset: 950;
+  stroke-width: 8;
+  fill: transparent;
+}
+#minuteCircle.start {
+  animation: fillMinute 60s linear infinite forwards;
+}
+
+@keyframes fillMinute {
+  0% {
+    stroke-dashoffset: 950;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
