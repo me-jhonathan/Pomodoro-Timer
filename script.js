@@ -1,6 +1,7 @@
 // get restart/start button from index.html
 const startBtn = document.querySelector("#startBtn");
 const restartBtn = document.querySelector("#restartBtn");
+const fillInCircle = document.querySelector("#fillInCircle");
 
 // different timers depending on cycle
 const runTime = 25;
