@@ -2,7 +2,15 @@
 const startBtn = document.querySelector("#startBtn");
 const restartBtn = document.querySelector("#resetBtn");
 
-let minutes = 25;
+// different timers depending on cycle
+const runTime = 25;
+const breakTime = 5;
+const longBreakTime = 30;
+
+// cycle (run/break) counter
+let cycle = 0;
+
+let minutes = runTime;
 let seconds = 0;
 
 // add leading zero to display numbers
@@ -14,7 +22,20 @@ function countDown() {
     seconds = 59;
     minutes--;
     if (minutes < 0) {
-      minutes = 24;
+      // start break cycle
+      if (cycle % 2 == 0 && cycle != 6) {
+        minutes = breakTime - 1;
+      }
+      // start long break cycle and reset cycle
+      else if (cycle % 2 == 0 && cycle == 6) {
+        minutes = longBreakTime - 1;
+        cycle = 0;
+      }
+      // start run cycle
+      else {
+        minutes = runTime - 1;
+      }
+      cycle++;
     }
   }
 
