@@ -6,6 +6,11 @@ const restartBtn = document.querySelector("#restartBtn");
 const mainCircle = document.querySelector("#mainCircle");
 const minuteCircle = document.querySelector("#minuteCircle");
 
+window.addEventListener("DOMContentLoaded", () => {
+  const path = document.querySelector("#mainSVG1 path");
+  console.log(path.getTotalLength());
+});
+
 // different timers depending on cycle
 const runTime = 24;
 const breakTime = 5;
@@ -25,18 +30,23 @@ function countDown() {
   if (seconds < 0) {
     seconds = 59;
     minutes--;
+
     if (minutes < 0) {
       // start break cycle
-      if (cycle % 2 == 0 && cycle != 6) {
-        minutes = breakTime - 1;
-      }
-      // start long break cycle and reset cycle
-      else if (cycle % 2 == 0 && cycle == 6) {
-        minutes = longBreakTime - 1;
-        cycle = 0;
+      if (cycle % 2 == 0) {
+        startBreakCycleColor();
+        if (cycle != 6) {
+          minutes = breakTime - 1;
+        }
+        // start long break cycle and reset cycle
+        else {
+          minutes = longBreakTime - 1;
+          cycle = 0;
+        }
       }
       // start run cycle
       else {
+        startRunCycleColor();
         minutes = runTime;
       }
       cycle++;
@@ -55,13 +65,29 @@ function countDown() {
   }, 1000);
 }
 
+// start break cycle colors
+function startBreakCycleColor() {
+  minuteCircle.classList.remove("startRun");
+  minuteCircle.classList.add("startBreak");
+  mainCircle.classList.remove("startRun");
+  mainCircle.classList.add("startBreak");
+}
+
+// start run cycle colors
+function startRunCycleColor() {
+  minuteCircle.classList.remove("startBreak");
+  minuteCircle.classList.add("startRun");
+  mainCircle.classList.remove("startBreak");
+  mainCircle.classList.add("startRun");
+}
+
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   startBtn.disabled = true;
 
   // start the circle timers
-  mainCircle.classList.add("start");
-  minuteCircle.classList.add("start");
+  mainCircle.classList.add("startRun");
+  minuteCircle.classList.add("startRun");
 
   // start timer
   countDown();
