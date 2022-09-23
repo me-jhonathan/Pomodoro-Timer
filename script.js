@@ -6,6 +6,7 @@ const restartBtn = document.querySelector("#restartBtn");
 const mainCircle = document.querySelector("#mainCircle");
 const minuteCircle = document.querySelector("#minuteCircle");
 
+// **testing**
 window.addEventListener("DOMContentLoaded", () => {
   const path = document.querySelector("#mainSVG1 path");
   console.log(path.getTotalLength());
@@ -54,9 +55,13 @@ function countDown() {
     }
   }
 
-  // display time
+  // display time on app screen
   document.querySelector(".time").innerHTML =
     zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+
+  // display time in html title
+  document.querySelector("#title").innerHTML =
+    "Timer: " + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
 
   seconds--;
 
