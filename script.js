@@ -12,14 +12,14 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // different timers depending on cycle
-const runTime = 24;
+const runTime = 25;
 const breakTime = 5;
 const longBreakTime = 30;
 
 // cycle (run/break) counter
 let cycle = 0;
 
-let minutes = runTime;
+let minutes = 24;
 let seconds = 59;
 
 // add leading zero to display numbers
@@ -39,7 +39,8 @@ function countDown() {
           minutes = breakTime - 1;
         }
         // start long break cycle and reset cycle
-        else {
+        else if (cycle == 6) {
+          startLongBreakCycleColor();
           minutes = longBreakTime - 1;
           cycle = 0;
         }
@@ -47,7 +48,7 @@ function countDown() {
       // start run cycle
       else {
         startRunCycleColor();
-        minutes = runTime;
+        minutes = runTime - 1;
       }
       cycle++;
     }
@@ -65,20 +66,28 @@ function countDown() {
   }, 1000);
 }
 
+// start run cycle colors
+function startRunCycleColor() {
+  mainCircle.classList = "";
+  minuteCircle.classList = "";
+  minuteCircle.classList.add("startRun");
+  mainCircle.classList.add("startRun");
+}
+
 // start break cycle colors
 function startBreakCycleColor() {
-  minuteCircle.classList.remove("startRun");
+  mainCircle.classList = "";
+  minuteCircle.classList = "";
   minuteCircle.classList.add("startBreak");
-  mainCircle.classList.remove("startRun");
   mainCircle.classList.add("startBreak");
 }
 
-// start run cycle colors
-function startRunCycleColor() {
-  minuteCircle.classList.remove("startBreak");
-  minuteCircle.classList.add("startRun");
-  mainCircle.classList.remove("startBreak");
-  mainCircle.classList.add("startRun");
+// start long break cycle colors
+function startLongBreakCycleColor() {
+  mainCircle.classList = "";
+  minuteCircle.classList = "";
+  mainCircle.classList.add("startLongBreak");
+  minuteCircle.classList.add("startLongBreak");
 }
 
 // if user clicks on 'start' button start timer
@@ -86,8 +95,7 @@ startBtn.addEventListener("click", (e) => {
   startBtn.disabled = true;
 
   // start the circle timers
-  mainCircle.classList.add("startRun");
-  minuteCircle.classList.add("startRun");
+  startRunCycleColor();
 
   // start timer
   countDown();
