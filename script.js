@@ -61,7 +61,7 @@ function countDown() {
 
   // display time on app screen
   document.querySelector(".time").innerHTML =
-    cycleTitle + ":" + zeroPad(seconds, 2);
+    zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
 
   // display time in html title
   document.querySelector("#title").innerHTML =
