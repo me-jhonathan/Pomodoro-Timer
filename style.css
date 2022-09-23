@@ -35,7 +35,7 @@ body {
   stroke-width: 18;
   fill: transparent;
 }
-#mainCircle.startRun {
+#mainCircle.startWork {
   stroke: #c41414;
   animation: fillMain 1500s linear infinite forwards;
 }
@@ -64,7 +64,7 @@ body {
   stroke-width: 8;
   fill: transparent;
 }
-#minuteCircle.startRun {
+#minuteCircle.startWork {
   stroke: #a71f1f;
   animation: fillMinute 60s linear infinite forwards;
 }

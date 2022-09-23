@@ -13,11 +13,12 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // different timers depending on cycle
-const runTime = 25;
+const workTime = 25;
 const breakTime = 5;
 const longBreakTime = 30;
+let cycleTitle = "Work: ";
 
-// cycle (run/break) counter
+// cycle (work/break) counter
 let cycle = 0;
 
 let minutes = 24;
@@ -36,20 +37,23 @@ function countDown() {
       // start break cycle
       if (cycle % 2 == 0) {
         startBreakCycleColor();
+        cycleTitle = "Break: ";
         if (cycle != 6) {
           minutes = breakTime - 1;
         }
         // start long break cycle and reset cycle
         else if (cycle == 6) {
           startLongBreakCycleColor();
+          cycleTitle = "Long Break: ";
           minutes = longBreakTime - 1;
           cycle = 0;
         }
       }
-      // start run cycle
+      // start work cycle
       else {
-        startRunCycleColor();
-        minutes = runTime - 1;
+        startWorkCycleColor();
+        cycleTitle = "Work: ";
+        minutes = workTime - 1;
       }
       cycle++;
     }
@@ -57,11 +61,11 @@ function countDown() {
 
   // display time on app screen
   document.querySelector(".time").innerHTML =
-    zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+    cycleTitle + ":" + zeroPad(seconds, 2);
 
   // display time in html title
   document.querySelector("#title").innerHTML =
-    "Timer: " + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+    cycleTitle + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
 
   seconds--;
 
@@ -71,12 +75,12 @@ function countDown() {
   }, 1000);
 }
 
-// start run cycle colors
-function startRunCycleColor() {
+// start work cycle colors
+function startWorkCycleColor() {
   mainCircle.classList = "";
   minuteCircle.classList = "";
-  minuteCircle.classList.add("startRun");
-  mainCircle.classList.add("startRun");
+  minuteCircle.classList.add("startWork");
+  mainCircle.classList.add("startWork");
 }
 
 // start break cycle colors
@@ -100,7 +104,7 @@ startBtn.addEventListener("click", (e) => {
   startBtn.disabled = true;
 
   // start the circle timers
-  startRunCycleColor();
+  startWorkCycleColor();
 
   // start timer
   countDown();
