@@ -5,6 +5,7 @@
 }
 body {
   background: lightcoral;
+  background: rgb(192, 128, 235);
 }
 .container {
   position: absolute;

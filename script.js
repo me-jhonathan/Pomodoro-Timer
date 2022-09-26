@@ -77,6 +77,7 @@ function countDown() {
 
 // start work cycle colors
 function startWorkCycleColor() {
+  document.body.style.background = "lightcoral";
   mainCircle.classList = "";
   minuteCircle.classList = "";
   minuteCircle.classList.add("startWork");
@@ -85,6 +86,7 @@ function startWorkCycleColor() {
 
 // start break cycle colors
 function startBreakCycleColor() {
+  document.body.style.background = "rgb(104, 152, 223)";
   mainCircle.classList = "";
   minuteCircle.classList = "";
   minuteCircle.classList.add("startBreak");
@@ -93,6 +95,7 @@ function startBreakCycleColor() {
 
 // start long break cycle colors
 function startLongBreakCycleColor() {
+  document.body.style.background = "rgb(192, 128, 235)";
   mainCircle.classList = "";
   minuteCircle.classList = "";
   mainCircle.classList.add("startLongBreak");
