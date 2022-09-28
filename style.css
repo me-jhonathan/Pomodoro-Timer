@@ -11,7 +11,7 @@ body {
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
-  padding: 2%;
+  padding: 1.2%;
   background-color: #ff000027;
   border-radius: 1.5vw;
   border: 2px solid firebrick;
@@ -23,14 +23,35 @@ body {
   text-align: center;
   color: white;
   font-family: "Audiowide", sans-serif;
-
   font-size: 1.4em;
 }
 .controls {
   text-align: center;
+  padding: 1px;
 }
 #startBtn {
   background-color: rgb(245, 28, 28);
+  font-family: "Audiowide", sans-serif;
+  border-radius: 1.5vw;
+  display: inline-block;
+  padding: 1px 3px;
+}
+#startBtn:hover {
+  background-color: rgb(252, 0, 0);
+}
+#startBtn:disabled {
+  opacity: 0.6;
+  background-color: rgb(245, 28, 28);
+  cursor: not-allowed;
+}
+#restartBtn {
+  font-family: "Audiowide", sans-serif;
+  border-radius: 1.5vw;
+  display: inline-block;
+  padding: 1px 3px;
+}
+#restartBtn:hover {
+  background-color: rgb(219, 181, 181);
 }
 #mainSVG {
   position: absolute;
