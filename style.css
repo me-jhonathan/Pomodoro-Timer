@@ -11,9 +11,20 @@ body {
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
+  padding: 2%;
+  background-color: #ff000027;
+  border-radius: 1.5vw;
+  border: 2px solid firebrick;
+  outline: None;
+  border-color: #c41414;
+  box-shadow: 0 0 10px #c41414;
 }
 .time {
   text-align: center;
+  color: white;
+  font-family: "Audiowide", sans-serif;
+
+  font-size: 1.4em;
 }
 .controls {
   text-align: center;
