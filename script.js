@@ -4,7 +4,6 @@ const restartBtn = document.querySelector("#restartBtn");
 
 // get the circles to begin their timers
 const mainCircle = document.querySelector("#mainCircle");
-const minuteCircle = document.querySelector("#minuteCircle");
 
 // **testing**
 window.addEventListener("DOMContentLoaded", () => {
@@ -79,8 +78,6 @@ function countDown() {
 function startWorkCycleColor() {
   document.body.style.background = "lightcoral";
   mainCircle.classList = "";
-  minuteCircle.classList = "";
-  minuteCircle.classList.add("startWork");
   mainCircle.classList.add("startWork");
 }
 
@@ -88,8 +85,6 @@ function startWorkCycleColor() {
 function startBreakCycleColor() {
   document.body.style.background = "rgb(104, 152, 223)";
   mainCircle.classList = "";
-  minuteCircle.classList = "";
-  minuteCircle.classList.add("startBreak");
   mainCircle.classList.add("startBreak");
 }
 
@@ -97,9 +92,7 @@ function startBreakCycleColor() {
 function startLongBreakCycleColor() {
   document.body.style.background = "rgb(192, 128, 235)";
   mainCircle.classList = "";
-  minuteCircle.classList = "";
   mainCircle.classList.add("startLongBreak");
-  minuteCircle.classList.add("startLongBreak");
 }
 
 // if user clicks on 'start' button start timer

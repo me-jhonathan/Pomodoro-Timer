@@ -90,25 +90,6 @@ body {
   }
 }
 
-#minuteCircle {
-  stroke-dasharray: 943;
-  stroke-dashoffset: 943;
-  stroke-width: 8;
-  fill: transparent;
-}
-#minuteCircle.startWork {
-  stroke: #a71f1f;
-  animation: fillMinute 60s linear infinite forwards;
-}
-#minuteCircle.startBreak {
-  stroke: #1c48a7;
-  animation: fillMinute 60s linear infinite forwards;
-}
-#minuteCircle.startLongBreak {
-  stroke: #8b2cc2;
-  animation: fillMinute 60s linear infinite forwards;
-}
-
 @keyframes fillMinute {
   0% {
     stroke-dashoffset: 943;
