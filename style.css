@@ -44,6 +44,16 @@ body {
   background-color: rgb(245, 28, 28);
   cursor: not-allowed;
 }
+#startBtn.startWork {
+  background-color: rgb(252, 0, 0);
+}
+#startBtn.startBreak {
+  background-color: blue;
+}
+#startBtn.startLongBreak {
+  background-color: purple;
+}
+
 #restartBtn {
   font-family: "Audiowide", sans-serif;
   border-radius: 1.5vw;
@@ -71,6 +81,9 @@ body {
 #mainCircle.startLongBreak {
   stroke: #730dc7;
   animation: fillMain 1800s linear infinite forwards;
+}
+#mainCircle.paused {
+  animation-play-state: paused;
 }
 
 @keyframes fillMain {

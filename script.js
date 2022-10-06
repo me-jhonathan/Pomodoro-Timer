@@ -77,25 +77,32 @@ function countDown() {
 function startWorkCycleColor() {
   document.body.style.background = "lightcoral";
   mainCircle.classList = "";
+  startBtn.classList = "";
   mainCircle.classList.add("startWork");
+  startBtn.classList.add("startWork");
 }
 
 // start break cycle colors
 function startBreakCycleColor() {
   document.body.style.background = "rgb(104, 152, 223)";
   mainCircle.classList = "";
+  startBtn.classList = "";
   mainCircle.classList.add("startBreak");
+  startBtn.classList.add("startBreak");
 }
 
 // start long break cycle colors
 function startLongBreakCycleColor() {
   document.body.style.background = "rgb(192, 128, 235)";
   mainCircle.classList = "";
+  startBtn.classList = "";
   mainCircle.classList.add("startLongBreak");
+  startBtn.classList.add("startLongBreak");
 }
 
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
+  this.removeEventListener("click", (e) => {});
   startBtn.disabled = true;
   playArrow.style.visibility = "hidden";
   time.style.visibility = "visible";
