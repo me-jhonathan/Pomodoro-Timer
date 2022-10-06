@@ -6,36 +6,35 @@
 body {
   background: lightcoral;
 }
-.container {
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  transform: translate(-50%, -50%);
-  padding: 1.2%;
-  background-color: #ff000027;
-  border-radius: 1.5vw;
-  border: 2px solid firebrick;
-  outline: None;
-  border-color: #c41414;
-  box-shadow: 0 0 10px #c41414;
+.center {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .time {
+  position: absolute;
   text-align: center;
   color: white;
   font-family: "Audiowide", sans-serif;
-  font-size: 1.4em;
-}
-.controls {
-  text-align: center;
-  padding: 1px;
+  font-size: 3.5em;
 }
 #startBtn {
+  position: absolute;
   background-color: rgb(245, 28, 28);
   font-family: "Audiowide", sans-serif;
   border-radius: 1.5vw;
   display: inline-block;
   padding: 1px 3px;
+  border-radius: 50%;
+  width: 233px;
+  height: 233px;
 }
+/* #startBtn img {
+  height: 40px;
+  width: 40px;
+} */
 #startBtn:hover {
   background-color: rgb(252, 0, 0);
 }
@@ -53,18 +52,10 @@ body {
 #restartBtn:hover {
   background-color: rgb(219, 181, 181);
 }
-#mainSVG {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
 #mainCircle {
   stroke-dasharray: 817;
   stroke-dashoffset: 817;
-  stroke-width: 18;
+  stroke-width: 25;
   fill: transparent;
 }
 #mainCircle.startWork {
@@ -84,15 +75,6 @@ body {
 @keyframes fillMain {
   0% {
     stroke-dashoffset: 817;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes fillMinute {
-  0% {
-    stroke-dashoffset: 943;
   }
   100% {
     stroke-dashoffset: 0;
