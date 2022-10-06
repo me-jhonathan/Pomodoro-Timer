@@ -5,6 +5,8 @@ const restartBtn = document.querySelector("#restartBtn");
 // get the circles to begin their timers
 const mainCircle = document.querySelector("#mainCircle");
 
+const playArrow = document.querySelector("#playArrow");
+
 // **testing**
 window.addEventListener("DOMContentLoaded", () => {
   const path = document.querySelector("#mainSVG1 path");
@@ -98,6 +100,7 @@ function startLongBreakCycleColor() {
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   startBtn.disabled = true;
+  playArrow.style.visibility = "hidden";
 
   // start the circle timers
   startWorkCycleColor();

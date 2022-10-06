@@ -31,10 +31,10 @@ body {
   width: 233px;
   height: 233px;
 }
-/* #startBtn img {
-  height: 40px;
-  width: 40px;
-} */
+#startBtn img {
+  height: 100px;
+  width: 100px;
+}
 #startBtn:hover {
   background-color: rgb(252, 0, 0);
 }
