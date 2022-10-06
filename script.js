@@ -1,11 +1,9 @@
-// get restart/start button from index.html
+// get html ids
 const startBtn = document.querySelector("#startBtn");
 const restartBtn = document.querySelector("#restartBtn");
-
-// get the circles to begin their timers
 const mainCircle = document.querySelector("#mainCircle");
-
 const playArrow = document.querySelector("#playArrow");
+const time = document.querySelector("#time");
 
 // **testing**
 window.addEventListener("DOMContentLoaded", () => {
@@ -61,8 +59,7 @@ function countDown() {
   }
 
   // display time on app screen
-  document.querySelector(".time").innerHTML =
-    zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+  time.innerHTML = zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
 
   // display time in html title
   document.querySelector("#title").innerHTML =
@@ -101,6 +98,7 @@ function startLongBreakCycleColor() {
 startBtn.addEventListener("click", (e) => {
   startBtn.disabled = true;
   playArrow.style.visibility = "hidden";
+  time.style.visibility = "visible";
 
   // start the circle timers
   startWorkCycleColor();
