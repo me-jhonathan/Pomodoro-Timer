@@ -25,8 +25,6 @@ body {
   position: absolute;
   background-color: rgb(245, 28, 28);
   font-family: "Audiowide", sans-serif;
-  border-radius: 1.5vw;
-  display: inline-block;
   padding: 1px 3px;
   border-radius: 50%;
   width: 235px;
@@ -37,7 +35,7 @@ body {
   width: 100px;
 }
 #startBtn:hover {
-  background-color: rgb(252, 0, 0);
+  background-color: rgb(196, 44, 44);
 }
 #startBtn:disabled {
   opacity: 0.6;
@@ -56,12 +54,20 @@ body {
 
 #restartBtn {
   font-family: "Audiowide", sans-serif;
-  border-radius: 1.5vw;
-  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  top: 5%;
+  right: 10%;
+  width: 50px;
+  height: 50px;
   padding: 1px 3px;
 }
 #restartBtn:hover {
   background-color: rgb(219, 181, 181);
+}
+#restartBtn img {
+  height: 30px;
+  width: 30px;
 }
 #mainCircle {
   stroke-dasharray: 817;

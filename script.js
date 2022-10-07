@@ -104,7 +104,7 @@ function startLongBreakCycleColor() {
 startBtn.addEventListener("click", (e) => {
   this.removeEventListener("click", (e) => {});
   startBtn.disabled = true;
-  playArrow.style.visibility = "hidden";
+  playArrowIcon.style.visibility = "hidden";
   time.style.visibility = "visible";
 
   // start the circle timers
