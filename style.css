@@ -27,8 +27,8 @@ body {
   font-family: "Audiowide", sans-serif;
   padding: 1px 3px;
   border-radius: 50%;
-  width: 235px;
-  height: 235px;
+  width: 242px;
+  height: 242px;
 }
 #startBtn img {
   height: 100px;
@@ -70,9 +70,9 @@ body {
   width: 30px;
 }
 #mainCircle {
-  stroke-dasharray: 817;
-  stroke-dashoffset: 817;
-  stroke-width: 25;
+  stroke-dasharray: 816.92919921875;
+  stroke-dashoffset: 816.92919921875;
+  stroke-width: 18;
   fill: transparent;
 }
 #mainCircle.startWork {

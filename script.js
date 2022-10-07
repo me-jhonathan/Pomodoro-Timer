@@ -7,7 +7,7 @@ const time = document.querySelector("#time");
 
 // **testing**
 window.addEventListener("DOMContentLoaded", () => {
-  const path = document.querySelector("#mainSVG1 path");
+  const path = document.querySelector("#mainSVG path");
   console.log(path.getTotalLength());
 });
 
