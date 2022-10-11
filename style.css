@@ -6,7 +6,7 @@
 body {
   background: lightcoral;
 }
-.center {
+.topContainer {
   padding: 50px;
   display: flex;
   justify-content: center;
@@ -52,12 +52,22 @@ body {
   background-color: purple;
 }
 
-#restartBtn {
+.bottomContainer {
   font-family: "Audiowide", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#cylinderContainer {
   position: absolute;
+  display: flex;
+  justify-content: space-around;
+  background-color: #142ec4;
+  height: 50px;
+  width: 200px;
+}
+#restartBtn {
   border-radius: 50%;
-  top: 5%;
-  right: 10%;
   width: 50px;
   height: 50px;
   padding: 1px 3px;
@@ -68,6 +78,17 @@ body {
 #restartBtn img {
   height: 30px;
   width: 30px;
+}
+#cycleId {
+  width: 50px;
+  height: 50px;
+  padding: 1px 3px;
+}
+#informationBtn {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 1px 3px;
 }
 #mainCircle {
   stroke-dasharray: 816.92919921875;

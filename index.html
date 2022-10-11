@@ -12,7 +12,7 @@
     />
   </head>
   <body>
-    <div class="center">
+    <div class="topContainer">
       <svg id="mainSVG" width="300" height="300">
         <circle
           cx="150"
@@ -37,15 +37,22 @@
           alt="paly arrow icon"
         />
       </button>
-      <button id="restartBtn">
-        <img
-          id="restartIcon"
-          src="./assets/replay_FILL0_wght400_GRAD0_opsz48.svg"
-          alt="replay icon"
-        />
-      </button>
+
       <div id="time">25:00</div>
       <script src="script.js"></script>
+    </div>
+    <div class="bottomContainer">
+      <div id="cylinderContainer">
+        <button id="restartBtn">
+          <img
+            id="restartIcon"
+            src="./assets/replay_FILL0_wght400_GRAD0_opsz48.svg"
+            alt="replay icon"
+          />
+        </button>
+        <div id="cycleId">CycleId</div>
+        <button id="informationBtn">i</button>
+      </div>
     </div>
   </body>
 </html>
