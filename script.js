@@ -1,6 +1,7 @@
 // get html ids
 const startBtn = document.querySelector("#startBtn");
 const restartBtn = document.querySelector("#restartBtn");
+const cycleBtn = document.querySelector("#cycleBtn");
 const mainCircle = document.querySelector("#mainCircle");
 const playArrow = document.querySelector("#playArrow");
 const time = document.querySelector("#time");
@@ -28,12 +29,14 @@ const zeroPad = (num, places) => String(num).padStart(places, "0");
 
 // automatic countdown timer
 function countDown() {
+  cycleBtn.innerHTML = cycle;
   if (seconds < 0) {
     seconds = 59;
     minutes--;
 
     if (minutes < 0) {
       // start break cycle
+
       if (cycle % 2 == 0) {
         startBreakCycleColor();
         cycleTitle = "Break: ";
@@ -116,5 +119,6 @@ startBtn.addEventListener("click", (e) => {
 
 // if user clicks on 'restart' button restart timer and cycle
 restartBtn.addEventListener("click", (e) => {
+  console.log("DEBUG");
   location.reload();
 });
