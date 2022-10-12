@@ -79,28 +79,30 @@ function countDown() {
 // start work cycle colors
 function startWorkCycleColor() {
   document.body.style.background = "lightcoral";
-  mainCircle.classList = "";
-  startBtn.classList = "";
-  mainCircle.classList.add("startWork");
-  startBtn.classList.add("startWork");
+  addCycleProperties("startWork");
 }
 
 // start break cycle colors
 function startBreakCycleColor() {
   document.body.style.background = "rgb(104, 152, 223)";
-  mainCircle.classList = "";
-  startBtn.classList = "";
-  mainCircle.classList.add("startBreak");
-  startBtn.classList.add("startBreak");
+  addCycleProperties("startBreak");
 }
 
 // start long break cycle colors
 function startLongBreakCycleColor() {
   document.body.style.background = "rgb(192, 128, 235)";
+  addCycleProperties("startLongBreak");
+}
+
+function addCycleProperties(cycleName) {
   mainCircle.classList = "";
   startBtn.classList = "";
-  mainCircle.classList.add("startLongBreak");
-  startBtn.classList.add("startLongBreak");
+  mainCircle.style.animationName = "none";
+  setTimeout(() => {
+    mainCircle.style.animationName = "";
+  }, 100);
+  mainCircle.classList.add(cycleName);
+  startBtn.classList.add(cycleName);
 }
 
 // if user clicks on 'start' button start timer
@@ -119,6 +121,5 @@ startBtn.addEventListener("click", (e) => {
 
 // if user clicks on 'restart' button restart timer and cycle
 restartBtn.addEventListener("click", (e) => {
-  console.log("DEBUG");
   location.reload();
 });

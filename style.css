@@ -20,6 +20,7 @@ body {
   font-family: "Audiowide", sans-serif;
   font-size: 3.5em;
   visibility: hidden;
+  pointer-events: none;
 }
 #startBtn {
   position: absolute;
@@ -104,16 +105,18 @@ body {
 }
 #mainCircle.startWork {
   stroke: #c41414;
-  animation: fillMain 1500s linear infinite forwards;
+  /* animation: fillMain 1500s linear infinite forwards; */
+  animation: fillMain 1500s linear 1 both;
 }
 
 #mainCircle.startBreak {
   stroke: #142ec4;
-  animation: fillMain 300s linear infinite forwards;
+  /* animation: fillMain 300s linear infinite forwards; */
+  animation: fillMain 300s linear 1 both;
 }
 #mainCircle.startLongBreak {
   stroke: #730dc7;
-  animation: fillMain 1800s linear infinite forwards;
+  animation: fillMain 1800s linear infinite both;
 }
 #mainCircle.paused {
   animation-play-state: paused;
