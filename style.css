@@ -12,6 +12,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+#circleOutline {
+  stroke: rgb(231, 147, 147);
+  stroke-width: 18;
+  fill: transparent;
+}
 
 #time {
   position: absolute;
@@ -101,20 +106,22 @@ body {
   stroke-dasharray: 816.92919921875;
   stroke-dashoffset: 816.92919921875;
   stroke-width: 18;
+  transform: rotate(-90deg);
+  transform-origin: center;
   fill: transparent;
 }
 #mainCircle.startWork {
   stroke: #c41414;
-  animation: fillMain 1504.5s linear infinite forwards;
+  animation: fillMain 1504.5s linear infinite forwards running;
 }
 
 #mainCircle.startBreak {
   stroke: #142ec4;
-  animation: fillMain 300s linear infinite forwards;
+  animation: fillMain 300s linear infinite forwards running;
 }
 #mainCircle.startLongBreak {
   stroke: #730dc7;
-  animation: fillMain 1800s linear infinite both;
+  animation: fillMain 1800s linear infinite forwards running;
 }
 #mainCircle.paused {
   animation-play-state: paused;

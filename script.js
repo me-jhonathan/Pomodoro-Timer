@@ -21,8 +21,13 @@ let cycleTitle = "Work: ";
 // cycle (work/break) counter
 let cycle = 0;
 
+// time
 let minutes = 24;
 let seconds = 59;
+
+// flow control
+let paused = false;
+let startCycle = true;
 
 // add leading zero to display numbers
 const zeroPad = (num, places) => String(num).padStart(places, "0");
@@ -108,15 +113,25 @@ function addCycleProperties(cycleName) {
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   this.removeEventListener("click", (e) => {});
-  startBtn.disabled = true;
-  playArrowIcon.style.visibility = "hidden";
-  time.style.visibility = "visible";
+  if (paused == false) {
+    paused = true;
+    mainCircle.style.animationPlayState = "running";
+    playArrowIcon.style.visibility = "hidden";
+    time.style.visibility = "visible";
 
-  // start the circle timers
-  startWorkCycleColor();
+    // if first time cliking start button
+    if (startCycle == true) {
+      startCycle = false;
+      // start the circle timers
+      startWorkCycleColor();
 
-  // start timer
-  countDown();
+      // start timer
+      countDown();
+    }
+  } else {
+    paused = false;
+    mainCircle.style.animationPlayState = "paused";
+  }
 });
 
 // if user clicks on 'restart' button restart timer and cycle
