@@ -26,7 +26,7 @@ let minutes = 24;
 let seconds = 59;
 
 // flow control
-let paused = false;
+let flowSwitch = false;
 let startCycle = true;
 
 // add leading zero to display numbers
@@ -34,57 +34,65 @@ const zeroPad = (num, places) => String(num).padStart(places, "0");
 
 // automatic countdown timer
 function countDown() {
-  cycleBtn.innerHTML = cycle;
-  if (seconds < 0) {
-    seconds = 59;
-    minutes--;
+  if (flowSwitch == true) {
+    cycleBtn.innerHTML = cycle;
+    if (seconds < 0) {
+      seconds = 59;
+      minutes--;
 
-    if (minutes < 0) {
-      // start break cycle
+      if (minutes < 0) {
+        // start break cycle
 
-      if (cycle % 2 == 0) {
-        startBreakCycleColor();
-        cycleTitle = "Break: ";
-        if (cycle != 6) {
-          minutes = breakTime - 1;
+        if (cycle % 2 == 0) {
+          startBreakCycleColor();
+          cycleTitle = "Break: ";
+          if (cycle != 6) {
+            minutes = breakTime - 1;
+          }
+          // start long break cycle and reset cycle
+          else if (cycle == 6) {
+            startLongBreakCycleColor();
+            cycleTitle = "Long Break: ";
+            minutes = longBreakTime - 1;
+            cycle = 0;
+          }
         }
-        // start long break cycle and reset cycle
-        else if (cycle == 6) {
-          startLongBreakCycleColor();
-          cycleTitle = "Long Break: ";
-          minutes = longBreakTime - 1;
-          cycle = 0;
+        // start work cycle
+        else {
+          startWorkCycleColor();
+          cycleTitle = "Work: ";
+          minutes = workTime - 1;
         }
+        cycle++;
       }
-      // start work cycle
-      else {
-        startWorkCycleColor();
-        cycleTitle = "Work: ";
-        minutes = workTime - 1;
-      }
-      cycle++;
     }
+
+    // display time on app screen
+    time.innerHTML = zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+
+    // display time in html title
+    document.querySelector("#title").innerHTML =
+      cycleTitle + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+
+    seconds--;
+
+    // refresh every second
+    setTimeout(() => {
+      countDown();
+    }, 1000);
+  } else {
   }
-
-  // display time on app screen
-  time.innerHTML = zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
-
-  // display time in html title
-  document.querySelector("#title").innerHTML =
-    cycleTitle + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
-
-  seconds--;
-
-  // refresh every second
-  setTimeout(() => {
-    countDown();
-  }, 1000);
 }
 
 // start work cycle colors
 function startWorkCycleColor() {
   document.body.style.background = "lightcoral";
-  addCycleProperties("startWork");
+  // if first time cliking start button
+  if (startCycle == true) {
+    startCycle = false;
+
+    addCycleProperties("startWork");
+  }
 }
 
 // start break cycle colors
@@ -113,23 +121,19 @@ function addCycleProperties(cycleName) {
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   this.removeEventListener("click", (e) => {});
-  if (paused == false) {
-    paused = true;
+  if (flowSwitch == false) {
+    flowSwitch = true;
     mainCircle.style.animationPlayState = "running";
     playArrowIcon.style.visibility = "hidden";
     time.style.visibility = "visible";
 
-    // if first time cliking start button
-    if (startCycle == true) {
-      startCycle = false;
-      // start the circle timers
-      startWorkCycleColor();
+    startWorkCycleColor();
 
-      // start timer
-      countDown();
-    }
+    // start timer
+    countDown();
+    // }
   } else {
-    paused = false;
+    flowSwitch = false;
     mainCircle.style.animationPlayState = "paused";
   }
 });
