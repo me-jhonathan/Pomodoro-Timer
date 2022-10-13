@@ -105,14 +105,12 @@ body {
 }
 #mainCircle.startWork {
   stroke: #c41414;
-  /* animation: fillMain 1500s linear infinite forwards; */
-  animation: fillMain 1500s linear 1 both;
+  animation: fillMain 1504.5s linear infinite forwards;
 }
 
 #mainCircle.startBreak {
   stroke: #142ec4;
-  /* animation: fillMain 300s linear infinite forwards; */
-  animation: fillMain 300s linear 1 both;
+  animation: fillMain 300s linear infinite forwards;
 }
 #mainCircle.startLongBreak {
   stroke: #730dc7;
@@ -124,7 +122,7 @@ body {
 
 @keyframes fillMain {
   0% {
-    stroke-dashoffset: 817;
+    stroke-dashoffset: 816.92919921875;
   }
   100% {
     stroke-dashoffset: 0;
