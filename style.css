@@ -6,11 +6,21 @@
 body {
   background: lightcoral;
 }
-.topContainer {
-  padding: 50px;
+.topContainer {  
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+svg {
+  width: 60vw;
+  height: 60vh;
+}
+@media only screen and (max-width: 767px) {
+  svg {
+    width: 100vw;
+    height: 100vh;
+  }
 }
 #circleOutline {
   stroke: rgb(231, 147, 147);
@@ -31,10 +41,9 @@ body {
   position: absolute;
   background-color: rgb(245, 28, 28);
   font-family: "Audiowide", sans-serif;
-  padding: 1px 3px;
   border-radius: 50%;
-  width: 242px;
-  height: 242px;
+  padding: 12vh 12vh;
+  font-size: 1vw;
 }
 #startBtn img {
   height: 100px;

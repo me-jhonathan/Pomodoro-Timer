@@ -30,7 +30,7 @@ let flowSwitch = false;
 let startCycle = true;
 
 // add leading zero to display numbers
-const zeroPad = (num, places) => String(num).padStart(places, "0");
+const zeroPad = (num) => (num < 10) ? '0' + num: num;
 
 // automatic countdown timer
 function countDown() {
@@ -68,11 +68,11 @@ function countDown() {
     }
 
     // display time on app screen
-    time.innerHTML = zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+    time.innerHTML = zeroPad(minutes) + ":" + zeroPad(seconds);    
 
     // display time in html title
     document.querySelector("#title").innerHTML =
-      cycleTitle + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2);
+      cycleTitle + zeroPad(minutes) + ":" + zeroPad(seconds);
 
     seconds--;
 
