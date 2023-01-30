@@ -5,12 +5,12 @@ const cycleBtn = document.querySelector("#cycleBtn");
 const mainCircle = document.querySelector("#mainCircle");
 const playArrow = document.querySelector("#playArrow");
 const time = document.querySelector("#time");
+const length = document.getElementById('mainCircle').getTotalLength();
 
-// **testing**
-window.addEventListener("DOMContentLoaded", () => {
-  const path = document.querySelector("#mainSVG path");
-  console.log(path.getTotalLength());
-});
+// testing
+console.log(length);
+addEventListener("resize", (event) => {console.log(length)});
+
 
 // different timers depending on cycle
 const workTime = 25;
