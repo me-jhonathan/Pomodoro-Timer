@@ -30,35 +30,69 @@ svg {
 
 #time {
   position: absolute;
-  text-align: center;
   color: white;
   font-family: "Audiowide", sans-serif;
-  font-size: 3.5em;
+  font-size: 5vw;
   visibility: hidden;
   pointer-events: none;
 }
+@media only screen and (max-width: 767px) {
+  #time {
+    font-size: 15vw;
+  }
+}
 #startBtn {
   position: absolute;
-  background-color: rgb(245, 28, 28);
-  font-family: "Audiowide", sans-serif;
-  border-radius: 50%;
-  padding: 12vh 12vh;
-  font-size: 1vw;
+  background: none;
+  padding: 35vh 40vh;
+  border-radius: 7%;
+  box-shadow: 0 10vh 5vh rgb(128, 42, 42);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
-#startBtn img {
-  height: 100px;
-  width: 100px;
+@media only screen and (max-width: 767px) {
+  #startBtn {
+    padding: 19vh 20vh;
+  }
 }
+#tomato {
+  background: url(./assets/tomato.svg) no-repeat center;
+  background-size: contain;
+  padding: 34vh 38vh;
+  position: absolute;
+}
+@media only screen and (max-width: 767px) {
+  #tomato {
+    padding: 18vh 19vh;
+  }
+}
+#playIconStart {
+  background: url(./assets/play_arrow_FILL0_wght400_GRAD0_opsz48.svg) no-repeat center;
+  background-size: contain;
+  width: 20vw;
+  height: 20vh;
+  position: absolute;
+}
+
 #startBtn:hover {
-  background-color: rgb(196, 44, 44);
+  border-radius: 17%;
+
+  box-shadow: 0 10vh 5vh rgb(145, 9, 9);
+
 }
 #startBtn:disabled {
   opacity: 0.6;
-  background-color: rgb(245, 28, 28);
+  /* background-color: rgb(245, 28, 28); */
+  /* background: url(./assets/replay_FILL0_wght400_GRAD0_opsz48.svg) no-repeat center; */
+
   cursor: not-allowed;
 }
 #startBtn.startWork {
-  background-color: rgb(252, 0, 0);
+  /* background: url(./assets/replay_FILL0_wght400_GRAD0_opsz48.svg) no-repeat center; */
+  /* background-color: rgb(252, 0, 0); */
 }
 #startBtn.startBreak {
   background-color: blue;
@@ -134,36 +168,4 @@ svg {
 #informationBtn:hover {
   background-color: rgb(219, 181, 181);
 }
-#mainCircle {
-  stroke-dasharray: 219.55624389648438;
-  stroke-dashoffset: 219.55624389648438;
-  stroke-width: 18;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  fill: transparent;
-}
-#mainCircle.startWork {
-  stroke: #c41414;
-  animation: fillMain 1504.5s linear infinite forwards running;
-}
 
-#mainCircle.startBreak {
-  stroke: #142ec4;
-  animation: fillMain 300s linear infinite forwards running;
-}
-#mainCircle.startLongBreak {
-  stroke: #730dc7;
-  animation: fillMain 1800s linear infinite forwards running;
-}
-#mainCircle.paused {
-  animation-play-state: paused;
-}
-
-@keyframes fillMain {
-  0% {
-    stroke-dashoffset: 219.55624389648438;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}

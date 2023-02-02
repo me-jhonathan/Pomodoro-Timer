@@ -2,28 +2,18 @@
 const startBtn = document.querySelector("#startBtn");
 const restartBtn = document.querySelector("#restartBtn");
 const cycleBtn = document.querySelector("#cycleBtn");
-const mainCircle = document.querySelector("#mainCircle");
 const playArrow = document.querySelector("#playArrow");
 const time = document.querySelector("#time");
-const length = document.getElementById('mainCircle').getTotalLength();
-
-// testing
-console.log(length);
-addEventListener("resize", (event) => {console.log(length)});
-
+const playIconStart = document.querySelector("#playIconStart");
 
 // different timers depending on cycle
-const workTime = 25;
-const breakTime = 5;
-const longBreakTime = 30;
+let workTime = 1500;
+let breakTime = 300;
+let longBreakTime = 1800;
 let cycleTitle = "Work: ";
 
 // cycle (work/break) counter
 let cycle = 0;
-
-// time
-let minutes = 24;
-let seconds = 59;
 
 // flow control
 let flowSwitch = false;
@@ -33,98 +23,83 @@ let startCycle = true;
 const zeroPad = (num) => (num < 10) ? '0' + num: num;
 
 // automatic countdown timer
-function countDown() {
-  if (flowSwitch == true) {
+const countDown = () => {
+    if (flowSwitch == true) {
     cycleBtn.innerHTML = cycle;
-    if (seconds < 0) {
-      seconds = 59;
-      minutes--;
+    // start work cycle
+    if (cycle % 6 === 0 || cycle % 6 === 2 || cycle % 6 === 4) {
+      timeLeft = workTime;
+      cycleTitle = "Work: "
+      startWorkCycleColor();
 
-      if (minutes < 0) {
-        // start break cycle
+    // start long break cycle
+    } else if (cycle % 6 === 6) {
+      timeLeft = longBreakTime;
+      cycleTitle = "Long Break: ";
+      startLongBreakCycleColor();
 
-        if (cycle % 2 == 0) {
-          startBreakCycleColor();
-          cycleTitle = "Break: ";
-          if (cycle != 6) {
-            minutes = breakTime - 1;
-          }
-          // start long break cycle and reset cycle
-          else if (cycle == 6) {
-            startLongBreakCycleColor();
-            cycleTitle = "Long Break: ";
-            minutes = longBreakTime - 1;
-            cycle = 0;
-          }
-        }
-        // start work cycle
-        else {
-          startWorkCycleColor();
-          cycleTitle = "Work: ";
-          minutes = workTime - 1;
-        }
-        cycle++;
-      }
+    // start break cycle  
+    } else {
+      timeLeft = breakTime;
+      cycleTitle = "Break: ";
+      startBreakCycleColor();
+
     }
-
-    // display time on app screen
+  // refresh every second
+  timer = setInterval(() => {
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      cycle++;
+      if (cycle === 6) {
+        cycle = 0;
+      }
+      countDown();
+      return;
+    }
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    timeLeft--;
+        // display time on app screen
     time.innerHTML = zeroPad(minutes) + ":" + zeroPad(seconds);    
 
     // display time in html title
     document.querySelector("#title").innerHTML =
       cycleTitle + zeroPad(minutes) + ":" + zeroPad(seconds);
-
-    seconds--;
-
-    // refresh every second
-    setTimeout(() => {
-      countDown();
-    }, 1000);
-  } else {
-  }
-}
+  }, 1000);
+} 
+};
 
 // start work cycle colors
 function startWorkCycleColor() {
   document.body.style.background = "lightcoral";
-  // if first time cliking start button
-  if (startCycle == true) {
-    startCycle = false;
+  playIconStart.style.display = "none";
 
-    addCycleProperties("startWork");
-  }
+  // addCycleProperties("startWork");
 }
 
 // start break cycle colors
 function startBreakCycleColor() {
   document.body.style.background = "rgb(104, 152, 223)";
-  addCycleProperties("startBreak");
+  // addCycleProperties("startBreak");
 }
 
 // start long break cycle colors
 function startLongBreakCycleColor() {
   document.body.style.background = "rgb(192, 128, 235)";
-  addCycleProperties("startLongBreak");
+  // addCycleProperties("startLongBreak");
 }
 
-function addCycleProperties(cycleName) {
-  mainCircle.classList = "";
-  startBtn.classList = "";
-  mainCircle.style.animationName = "none";
-  setTimeout(() => {
-    mainCircle.style.animationName = "";
-  }, 100);
-  mainCircle.classList.add(cycleName);
-  startBtn.classList.add(cycleName);
-}
+// function addCycleProperties(cycleName) {
+//   startBtn.classList = "";
+//   startBtn.classList.add(cycleName);
+// }
 
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   this.removeEventListener("click", (e) => {});
   if (flowSwitch == false) {
     flowSwitch = true;
-    mainCircle.style.animationPlayState = "running";
-    playArrowIcon.style.visibility = "hidden";
+    // playArrowIcon.style.visibility = "hidden";
     time.style.visibility = "visible";
 
     startWorkCycleColor();
@@ -134,7 +109,6 @@ startBtn.addEventListener("click", (e) => {
     // }
   } else {
     flowSwitch = false;
-    mainCircle.style.animationPlayState = "paused";
   }
 });
 
