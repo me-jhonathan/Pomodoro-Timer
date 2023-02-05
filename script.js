@@ -5,6 +5,8 @@ const cycleBtn = document.querySelector("#cycleBtn");
 const playArrow = document.querySelector("#playArrow");
 const time = document.querySelector("#time");
 const playIconStart = document.querySelector("#playIconStart");
+const caption = document.querySelector("#caption");
+
 
 // different timers depending on cycle
 let workTime = 1500;
@@ -15,6 +17,29 @@ let cycleTitle = "Work: ";
 // cycle (work/break) counter
 let cycle = 0;
 
+// caption saying depending on cycle
+let workSaying = ["Let's give it our full attention",
+                  "Focus time!",
+                  "Let's sharpen our focus",
+                  "It's time to get centered",
+                  "Focus ahead!",
+                  "Let's tune in to this task"
+]
+let breakSaying = ["Let's take a breather.",
+                  "Break time!",
+                  "Time to relax",
+                  "A time out is in order.",
+                  "Let's take a pause.",
+                  "A time out is in order."
+]
+let longBreakSaying = ["Let's take a much-needed rest.",
+                  "It's time to recharge our batteries.",
+                  "A longer pause is in order.",
+                  "Time to rejuvenate.",
+                  "A extended break is due.",
+                  "Let's take a timeout from the hustle."
+]
+
 // add leading zero to display numbers
 const zeroPad = (num) => (num < 10) ? '0' + num: num;
 
@@ -23,23 +48,17 @@ const countDown = () => {
     cycleBtn.innerHTML = cycle;
     // start work cycle
     if (cycle === 0 || cycle === 2 || cycle === 4) {
-      timeLeft = workTime;
-      cycleTitle = "Work: "
-      startWorkCycleColor();
+      startWorkCycle();
 
     // start long break cycle
     } else if (cycle === 6) {
-      timeLeft = longBreakTime;
-      cycleTitle = "Long Break: ";
-      startLongBreakCycleColor();
+      startLongBreakCycle();
 
     // start break cycle  
     } else {
-      timeLeft = breakTime;
-      cycleTitle = "Break: ";
-      startBreakCycleColor();
-
+      startBreakCycle();
     }
+
   // refresh every second
   timer = setInterval(() => {
     if (timeLeft <= 0) {
@@ -63,8 +82,14 @@ const countDown = () => {
   }, 1000);
 };
 
-// start work cycle colors
-function startWorkCycleColor() {
+// start work cycle
+function startWorkCycle() {
+  let randomIndex = Math.floor(Math.random() * 6);
+  timeLeft = workTime;
+  cycleTitle = "Work: "
+  caption.innerHTML = workSaying[randomIndex];
+
+  // page properties
   startBtn.disabled = true;
   document.body.style.background = "lightcoral";
   document.body.style.boxShadow = "inset 0 -1vw 4vh 4vh rgba(95, 3, 3, 0.5)";
@@ -72,15 +97,27 @@ function startWorkCycleColor() {
   addCycleProperties("startWork");
 }
 
-// start break cycle colors
-function startBreakCycleColor() {
+// start break cycle
+function startBreakCycle() {
+  let randomIndex = Math.floor(Math.random() * 6);
+  timeLeft = breakTime;
+  cycleTitle = "Break: ";
+  caption.innerHTML = breakSaying[randomIndex];
+
+  // page properties
   document.body.style.background = "rgb(104, 152, 223)";
   document.body.style.boxShadow = "inset 0 0 0 0vh rgba(95, 3, 3, 0.5)";
   addCycleProperties("startBreak");
 }
 
-// start long break cycle colors
-function startLongBreakCycleColor() {
+// start long break cycle
+function startLongBreakCycle() {
+  let randomIndex = Math.floor(Math.random() * 6);
+  timeLeft = longBreakTime;
+  cycleTitle = "Long Break: ";
+  caption.innerHTML = longBreakSaying[randomIndex];
+
+  // page properties
   document.body.style.background = "rgb(192, 128, 235)";
   document.body.style.boxShadow = "inset 0 0 0 0vh rgba(95, 3, 3, 0.5)";
   addCycleProperties("startLongBreak");
@@ -94,7 +131,8 @@ function addCycleProperties(cycleName) {
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
     time.style.visibility = "visible";
-    startWorkCycleColor();
+    caption.style.visibility = "visible";
+    startWorkCycle();
 
     // start timer
     countDown();

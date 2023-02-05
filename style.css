@@ -35,7 +35,24 @@ svg {
 }
 @media only screen and (max-width: 767px) {
   #time {
-    font-size: 15vw;
+    top: 33vh;
+    font-size: 18vw;
+  }
+}
+#caption {
+  position: absolute;
+  color: white;
+  font-family: "Audiowide", sans-serif;
+  font-size: 2vw;
+  visibility: hidden;
+  pointer-events: none;
+  top: 45vh;
+  opacity: 0.7;
+}
+@media only screen and (max-width: 767px) {
+  #caption {
+    top: 60vh;
+    font-size: 5vw;
   }
 }
 #startBtn {
