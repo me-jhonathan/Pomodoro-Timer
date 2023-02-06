@@ -18,7 +18,7 @@ svg {
   width: 60vw;
   height: 60vh;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   svg {
     width: 100vw;
     height: 100vh;
@@ -33,10 +33,10 @@ svg {
   visibility: hidden;
   pointer-events: none;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #time {
     top: 33vh;
-    font-size: 18vw;
+    font-size: 12vw;
   }
 }
 #caption {
@@ -49,7 +49,7 @@ svg {
   top: 45vh;
   opacity: 0.7;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #caption {
     top: 60vh;
     font-size: 5vw;
@@ -65,11 +65,9 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(221, 102, 102);
-
-  
+  background-color: rgb(221, 102, 102);  
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #startBtn {
     padding: 19vh 20vh;
   }
@@ -80,7 +78,7 @@ svg {
   padding: 34vh 38vh;
   position: absolute;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #tomato {
     padding: 18vh 19vh;
   }
@@ -97,11 +95,7 @@ svg {
   box-shadow: 0 12vh 7vh rgb(128, 42, 42);
 
 }
-#startBtn:disabled {
-  cursor: not-allowed;
-}
 #startBtn.startWork {
-  cursor: not-allowed;
   border-radius: 17%;
   box-shadow: 0 10vh 5vh rgb(145, 9, 9);
 }
@@ -112,7 +106,12 @@ svg {
   background-color: rgb(122, 122, 235);
 }
 #startBtn.startLongBreak {
+  opacity: 0.8;
   background-color: purple;
+}
+#startBtn.paused {
+  opacity: 0.8;
+  background-color: rgb(150, 150, 150);  
 }
 
 .bottomContainer {
@@ -130,9 +129,9 @@ svg {
   padding: 1vh 2vh;
   border-radius: 50px;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #cylinderContainer {
-    padding: 4vh 3vh;
+    padding: 1vh 2vh;
   }
 }
 #restartBtn {
@@ -141,7 +140,7 @@ svg {
   height: 5vh;
   margin: 1 .7vw;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #restartBtn {
     width: 11vw;
     height: 6vh;
@@ -159,7 +158,7 @@ svg {
   height: 5vh;
   margin: .7vw;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #cycleBtn {
     width: 11vw;
     height: 6vh;
@@ -171,7 +170,7 @@ svg {
   height: 5vh;
   margin: 1 0.7vw;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 915px) {
   #informationBtn {
     width: 11vw;
     height: 6vh;

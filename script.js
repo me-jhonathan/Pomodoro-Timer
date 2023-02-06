@@ -14,6 +14,9 @@ let breakTime = 300;
 let longBreakTime = 1800;
 let cycleTitle = "Work: ";
 
+let runing = false;
+let savedtimer = null;
+
 // cycle (work/break) counter
 let cycle = 0;
 
@@ -59,10 +62,14 @@ const countDown = () => {
       startBreakCycle();
     }
 
+  // keeps track of time if paused
+  timeLeft = savedtimer !== null ? savedtimer: timeLeft; 
+
   // refresh every second
   timer = setInterval(() => {
     if (timeLeft <= 0) {
       clearInterval(timer);
+      savedtimer = null;
       cycle++;
       if (cycle === 7) {
         cycle = 0;
@@ -86,11 +93,10 @@ const countDown = () => {
 function startWorkCycle() {
   let randomIndex = Math.floor(Math.random() * 6);
   timeLeft = workTime;
-  cycleTitle = "Work: "
-  caption.innerHTML = workSaying[randomIndex];
 
   // page properties
-  startBtn.disabled = true;
+  cycleTitle = "Work: "
+  caption.innerHTML = workSaying[randomIndex];
   document.body.style.background = "lightcoral";
   document.body.style.boxShadow = "inset 0 -1vw 4vh 4vh rgba(95, 3, 3, 0.5)";
   playIconStart.style.display = "none";
@@ -101,10 +107,10 @@ function startWorkCycle() {
 function startBreakCycle() {
   let randomIndex = Math.floor(Math.random() * 6);
   timeLeft = breakTime;
-  cycleTitle = "Break: ";
-  caption.innerHTML = breakSaying[randomIndex];
 
   // page properties
+  cycleTitle = "Break: ";
+  caption.innerHTML = breakSaying[randomIndex];
   document.body.style.background = "rgb(104, 152, 223)";
   document.body.style.boxShadow = "inset 0 0 0 0vh rgba(95, 3, 3, 0.5)";
   addCycleProperties("startBreak");
@@ -114,13 +120,26 @@ function startBreakCycle() {
 function startLongBreakCycle() {
   let randomIndex = Math.floor(Math.random() * 6);
   timeLeft = longBreakTime;
-  cycleTitle = "Long Break: ";
-  caption.innerHTML = longBreakSaying[randomIndex];
 
   // page properties
+  cycleTitle = "Long Break: ";
+  caption.innerHTML = longBreakSaying[randomIndex];
   document.body.style.background = "rgb(192, 128, 235)";
   document.body.style.boxShadow = "inset 0 0 0 0vh rgba(95, 3, 3, 0.5)";
   addCycleProperties("startLongBreak");
+}
+
+// pause cycle
+function pauseCycle() {
+  // save current time
+  savedtimer = timeLeft;
+
+  // page properties
+  cycleTitle = "Paused: ";
+  caption.innerHTML = "Paused";
+  document.body.style.boxShadow = "inset 0 0 0 0vh rgba(95, 3, 3, 0.5)";
+  clearInterval(timer);
+  addCycleProperties("paused");
 }
 
 function addCycleProperties(cycleName) {
@@ -130,12 +149,17 @@ function addCycleProperties(cycleName) {
 
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
+  runing = !runing;
+  if (runing){
     time.style.visibility = "visible";
     caption.style.visibility = "visible";
     startWorkCycle();
-
     // start timer
     countDown();
+  } else {
+    // if paused
+    pauseCycle();
+  }
 });
 
 // if user clicks on 'restart' button restart timer and cycle
