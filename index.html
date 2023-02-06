@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="title">Pomodoro Timer</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="settingStyle.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Audiowide"
@@ -17,22 +18,13 @@
           <div id="tomato"></div> 
           <div id="playIconStart"></div> 
       </button>
-
       <div id="time">25:00</div>
       <div id="caption"></div>
     </div>
     <div class="bottomContainer">
-      <div id="cylinderContainer">
-        <button id="restartBtn">
-          <img
-            id="restartIcon"
-            src="./assets/replay_FILL0_wght400_GRAD0_opsz48.svg"
-            alt="replay icon"
-          />
-        </button>
-        <button id="cycleBtn">0</button>
-        <button id="informationBtn">i</button>
-      </div>
+      <button id="settingBtn">
+        <div id="settingPot"></div> 
+    </button>
     </div>
   </body>
   <script src="script.js"></script>

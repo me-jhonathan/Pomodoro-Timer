@@ -1,11 +1,11 @@
 // get html ids
 const startBtn = document.querySelector("#startBtn");
 const restartBtn = document.querySelector("#restartBtn");
-const cycleBtn = document.querySelector("#cycleBtn");
 const playArrow = document.querySelector("#playArrow");
 const time = document.querySelector("#time");
 const playIconStart = document.querySelector("#playIconStart");
 const caption = document.querySelector("#caption");
+const settingBtn = document.querySelector("#settingBtn");
 
 
 // different timers depending on cycle
@@ -48,7 +48,6 @@ const zeroPad = (num) => (num < 10) ? '0' + num: num;
 
 // automatic countdown timer
 const countDown = () => {
-    cycleBtn.innerHTML = cycle;
     // start work cycle
     if (cycle === 0 || cycle === 2 || cycle === 4) {
       startWorkCycle();
@@ -144,7 +143,9 @@ function pauseCycle() {
 
 function addCycleProperties(cycleName) {
   startBtn.classList = "";
+  settingBtn.classList = "";
   startBtn.classList.add(cycleName);
+  settingBtn.classList.add(cycleName);
 }
 
 // if user clicks on 'start' button start timer
@@ -160,9 +161,4 @@ startBtn.addEventListener("click", (e) => {
     // if paused
     pauseCycle();
   }
-});
-
-// if user clicks on 'restart' button restart timer and cycle
-restartBtn.addEventListener("click", (e) => {
-  location.reload();
 });

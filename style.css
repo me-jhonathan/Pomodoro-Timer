@@ -96,88 +96,42 @@ svg {
 
 }
 #startBtn.startWork {
-  border-radius: 17%;
   box-shadow: 0 10vh 5vh rgb(145, 9, 9);
+  animation: button-work 0.5s forwards;
 }
 #startBtn.startBreak {
   opacity: 0.8;
   box-shadow: 0 10vh 5vh rgb(122, 100, 200);
   border-radius: 7%;
   background-color: rgb(122, 122, 235);
+  animation: button-relax 0.5s forwards;
 }
 #startBtn.startLongBreak {
   opacity: 0.8;
   background-color: purple;
+  animation: button-relax 0.5s forwards;
 }
 #startBtn.paused {
   opacity: 0.8;
   background-color: rgb(150, 150, 150);  
+  animation: button-relax 0.5s forwards;
 }
-
-.bottomContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15vh;
-}
-#cylinderContainer {
-  position: absolute;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #e94528;
-  padding: 1vh 2vh;
-  border-radius: 50px;
-}
-@media only screen and (max-width: 915px) {
-  #cylinderContainer {
-    padding: 1vh 2vh;
+@keyframes button-work {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.9);
+    border-radius: 17%;
   }
 }
-#restartBtn {
-  border-radius: 50%;
-  width: 4vw;
-  height: 5vh;
-  margin: 1 .7vw;
-}
-@media only screen and (max-width: 915px) {
-  #restartBtn {
-    width: 11vw;
-    height: 6vh;
+@keyframes button-relax {
+  0% {
+    transform: scale(0.9);
+    border-radius: 17%;
   }
-}
-
-#restartBtn img {
-  height: 30px;
-  width: 30px;
-}
-#cycleBtn {
-  font-family: "Audiowide", sans-serif;
-  border-radius: 50%;
-  width: 4vw;
-  height: 5vh;
-  margin: .7vw;
-}
-@media only screen and (max-width: 915px) {
-  #cycleBtn {
-    width: 11vw;
-    height: 6vh;
+  100% {
+    transform: scale(1);
+    border-radius: 7%;
   }
-}
-#informationBtn {
-  border-radius: 50%;
-  width: 4vw;
-  height: 5vh;
-  margin: 1 0.7vw;
-}
-@media only screen and (max-width: 915px) {
-  #informationBtn {
-    width: 11vw;
-    height: 6vh;
-  }
-}
-#restartBtn:hover,
-#cycleBtn:hover,
-#informationBtn:hover {
-  background-color: rgb(219, 181, 181);
 }
