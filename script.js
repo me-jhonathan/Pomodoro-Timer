@@ -6,7 +6,7 @@ const time = document.querySelector("#time");
 const playIconStart = document.querySelector("#playIconStart");
 const caption = document.querySelector("#caption");
 const settingBtn = document.querySelector("#settingBtn");
-
+const topContainer = document.querySelector(".topContainer");
 
 // different timers depending on cycle
 let workTime = 1500;
@@ -15,6 +15,8 @@ let longBreakTime = 1800;
 let cycleTitle = "Work: ";
 
 let runing = false;
+let timer = null;
+let timeLeft = null;
 let savedtimer = null;
 
 // cycle (work/break) counter
@@ -96,8 +98,6 @@ function startWorkCycle() {
   // page properties
   cycleTitle = "Work: "
   caption.innerHTML = workSaying[randomIndex];
-  document.body.style.background = "lightcoral";
-  document.body.style.boxShadow = "inset 0 -1vw 4vh 4vh rgba(95, 3, 3, 0.5)";
   playIconStart.style.display = "none";
   addCycleProperties("startWork");
 }
@@ -110,8 +110,6 @@ function startBreakCycle() {
   // page properties
   cycleTitle = "Break: ";
   caption.innerHTML = breakSaying[randomIndex];
-  document.body.style.background = "rgb(104, 152, 223)";
-  document.body.style.boxShadow = "inset 0 0 0 0vh rgba(95, 3, 3, 0.5)";
   addCycleProperties("startBreak");
 }
 
@@ -123,15 +121,13 @@ function startLongBreakCycle() {
   // page properties
   cycleTitle = "Long Break: ";
   caption.innerHTML = longBreakSaying[randomIndex];
-  document.body.style.background = "rgb(192, 128, 235)";
-  document.body.style.boxShadow = "inset 0 0 0 0vh rgba(95, 3, 3, 0.5)";
   addCycleProperties("startLongBreak");
 }
 
 // pause cycle
 function pauseCycle() {
   // save current time
-  savedtimer = timeLeft;
+  savedtimer = timeLeft !== null ? timeLeft: savedtimer; 
 
   // page properties
   cycleTitle = "Paused: ";
@@ -142,10 +138,14 @@ function pauseCycle() {
 }
 
 function addCycleProperties(cycleName) {
+  if (cycleName !== "paused") document.body.classList = "";
   startBtn.classList = "";
   settingBtn.classList = "";
+  
+  document.body.classList.add(cycleName);
   startBtn.classList.add(cycleName);
   settingBtn.classList.add(cycleName);
+
 }
 
 // if user clicks on 'start' button start timer
@@ -160,5 +160,19 @@ startBtn.addEventListener("click", (e) => {
   } else {
     // if paused
     pauseCycle();
+  }
+});
+
+// if user clicks on 'settings' button
+settingBtn.addEventListener("click", (e) => {
+  if (!settingBtn.disabled){
+    pauseCycle();
+
+    topContainer.classList.toggle("flip");
+    // set button cool down
+    settingBtn.disabled = true;
+    setTimeout(function() {
+      settingBtn.disabled = false;
+    }, 1000);
   }
 });

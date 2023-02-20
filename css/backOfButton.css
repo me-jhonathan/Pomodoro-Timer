@@ -1,0 +1,19 @@
+.backTopContainer {
+    position: absolute;
+    background: none;
+    padding: 35vh 40vh;
+    border-radius: 7%;
+    box-shadow: 0 10vh 5vh rgb(128, 42, 42);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(221, 102, 102);  
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+@media only screen and (max-width: 915px) {
+    .backTopContainer {
+      padding: 19vh 20vh;
+    }
+  }

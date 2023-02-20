@@ -1,0 +1,58 @@
+#settingBtn {
+  position: absolute;
+  top: 75vh;
+  background: none;
+  padding: 7vh 8vh;
+  border-radius: 7%;
+  box-shadow: 0 4vh 5vh rgb(128, 42, 42);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(221, 102, 102);  
+}
+@media only screen and (max-width: 915px) {
+  #settingBtn {
+    top: 68vh;
+    padding: 7vh 8.25vh;
+  }
+}
+#settingBtn:disabled{
+  opacity: 0.8;
+  background-color: rgb(150, 150, 150);  
+}
+#settingPot {
+  background: url(/assets/settings_pot.svg) no-repeat center;    
+  background-size: contain;
+  padding: 6.5vh 6.5vh;
+  position: absolute;
+}
+@media only screen and (max-width: 915px) {
+#settingPot {
+  padding: 6vh 6vh;
+}
+}
+#settingBtn.startWork {
+  opacity: 0.8;
+  background-color: rgb(175, 79, 79);  
+  animation: button-work-settings 0.5s forwards;
+}
+#settingBtn.paused {
+  animation: button-relax-settings 0.5s forwards;
+}
+@keyframes button-work-settings {
+  0% {
+    border-radius: 7%;
+  }
+  100% {
+    border-radius: 17%;
+  }
+}
+@keyframes button-relax-settings {
+  0% {
+    border-radius: 17%;
+  }
+  100% {
+    border-radius: 7%;
+  }
+}

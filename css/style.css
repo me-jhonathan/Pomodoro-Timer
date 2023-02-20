@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  background: lightcoral;
+}
+body.startWork{
+  background: lightcoral;
+  box-Shadow: inset 0 -1vw 4vh 4vh rgba(95, 3, 3, 0.5);
+}
+body.startBreak{
+  background: rgb(104, 152, 223);
+  box-Shadow: inset 0 0 0 0vh rgba(95, 3, 3, 0.5);
+}
+body.startLongBreak{
+  background: rgb(192, 128, 235);
+  box-Shadow: inset 0 0 0 0vh rgba(95, 3, 3, 0.5);
+}
+.topContainer {  
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 2s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+.topContainer.flip {
+  transform: rotateY(540deg);
+}
+.bottomContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}
