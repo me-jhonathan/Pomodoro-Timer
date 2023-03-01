@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="title">Pomodoro Timer</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/frontOfButton.css" />
     <link rel="stylesheet" href="/css/settingStyle.css" />
     <link rel="stylesheet" href="/css/backOfButton.css" />
@@ -23,7 +23,33 @@
       <div id="time">25:00</div>
       <div id="caption"></div>
       <div class="backTopContainer">
-        <h2>Back of Button</h2>
+        <div class="dropdown">
+          <button id="work-time-btn" class="dropbtn">Work Time (25)</button>
+          <div class="dropdown-content">
+          <p>25 Minutes</p>
+          <p>30 Minutes</p>
+          <p>35 Minutes</p>
+          <p>40 Minutes</p>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button id="break-time-btn" class="dropbtn">Break Time (5)</button>
+          <div class="dropdown-content">
+          <p>5 Minutes</p>
+          <p>10 Minutes</p>
+          <p>15 Minutes</p>
+          <p>20 Minutes</p>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button id="long-break-time-btn" class="dropbtn">Long Break Time (30)</button>
+          <div class="dropdown-content">
+          <p>30 Minutes</p>
+          <p>40 Minutes</p>
+          <p>50 Minutes</p>
+          <p>60 Minutes</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="bottomContainer">
