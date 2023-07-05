@@ -1,10 +1,12 @@
 p {
   position: relative;
+  font-size: 2.5vh;
+  font-weight: bold;
 }
 .backTopContainer {
   position: absolute;
   background: none;
-  padding: 35vh 15vw;
+  padding: 32vh 15vw;
   border-radius: 7%;
   box-shadow: 0 10vh 5vh rgb(128, 42, 42);
   border: none;
@@ -46,7 +48,7 @@ p {
 #greenTomato {
   background: url(/assets/green_tomato.svg) no-repeat center;
   background-size: contain;
-  padding: 17vh 19vh;
+  padding: 17vh 13vw;
   position: absolute;
 }
 #work-time-btn{
@@ -54,9 +56,11 @@ p {
   top: 4vh;
 }
 #work-time-btn input{
+  text-align: center;
+  border-radius: 10vh;
   height: 6vh;
   width: 13vw;
-  font-size: larger ;
+  font-size: 2.5vh;
   font-weight: bolder;
 }
 @media only screen and (max-width: 915px) {
