@@ -12,9 +12,9 @@ const breakTimeBtn = document.getElementById("break-time-btn");
 const longBreakTimeBtn = document.getElementById("long-break-time-btn");
 
 // setup dropdown settings
-setupDropdown(workTimeBtn, "Work Time ");
-setupDropdown(breakTimeBtn, "Break Time ");
-setupDropdown(longBreakTimeBtn, "Long Break TIme ");
+// setupDropdown(workTimeBtn, "Work Time ");
+// setupDropdown(breakTimeBtn, "Break Time ");
+// setupDropdown(longBreakTimeBtn, "Long Break TIme ");
 
 // different timers depending on cycle
 let workTime = 1500;
@@ -186,15 +186,15 @@ settingBtn.addEventListener("click", (e) => {
 });
 
 // if user selects settings dropdown
-function setupDropdown(btnElem, timeType) {
-  const timeOptions = btnElem.nextElementSibling.querySelectorAll("p");
-  timeOptions.forEach((option) => {
-    option.addEventListener("click", () => {
-      // get the selected time and remove "Minutes"
-      const selectedTime = option.textContent.replace(' Minutes','');
+// function setupDropdown(btnElem, timeType) {
+//   const timeOptions = btnElem.nextElementSibling.querySelectorAll("p");
+//   timeOptions.forEach((option) => {
+//     option.addEventListener("click", () => {
+//       // get the selected time and remove "Minutes"
+//       const selectedTime = option.textContent.replace(' Minutes','');
 
-      // Update dropdown button
-      btnElem.textContent =  timeType + "(" + selectedTime + ")";
-    });
-  });
-}
+//       // Update dropdown button
+//       btnElem.textContent =  timeType + "(" + selectedTime + ")";
+//     });
+//   });
+// }

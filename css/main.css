@@ -20,7 +20,7 @@ body.startLongBreak{
   background: rgb(192, 128, 235);
   box-Shadow: inset 0 0 0 0vh rgba(95, 3, 3, 0.5);
 }
-.topContainer {  
+.topContainer{  
   height: 70vh;
   display: flex;
   justify-content: center;
@@ -36,4 +36,9 @@ body.startLongBreak{
   justify-content: center;
   align-items: center;
   height: 20vh;
+}
+p {
+  text-align: center;
+  font-size:200%;
+  font-family: "Audiowide", sans-serif;
 }
