@@ -10,11 +10,7 @@ const topContainer = document.querySelector(".topContainer");
 const workTimeBtn = document.getElementById("work-time-btn");
 const breakTimeBtn = document.getElementById("break-time-btn");
 const longBreakTimeBtn = document.getElementById("long-break-time-btn");
-
-// setup dropdown settings
-// setupDropdown(workTimeBtn, "Work Time ");
-// setupDropdown(breakTimeBtn, "Break Time ");
-// setupDropdown(longBreakTimeBtn, "Long Break TIme ");
+const updateButton = document.getElementById("updateButton");
 
 // different timers depending on cycle
 let workTime = 1500;
@@ -156,6 +152,29 @@ function addCycleProperties(cycleName) {
 
 }
 
+function validateAndGetValue(inputElement) {
+  // remove leading and trailing whitespaces
+  var value = inputElement.value.trim();
+
+  // if the input is empty, leave it alone
+  if (value === "") {  
+    return value;
+  }
+
+  value = parseInt(value);
+
+  if (isNaN(value) || value < 1) {
+    // if value is under 0 or is negative, set to 1
+    inputElement.value = 1;
+    return 1;
+  } else if (value > 90) {
+    // if value is over 90, set it to 90
+    inputElement.value = 90;
+    return 90;
+  }
+  return value;
+}
+
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   runing = !runing;
@@ -185,16 +204,18 @@ settingBtn.addEventListener("click", (e) => {
   }
 });
 
-// if user selects settings dropdown
-// function setupDropdown(btnElem, timeType) {
-//   const timeOptions = btnElem.nextElementSibling.querySelectorAll("p");
-//   timeOptions.forEach((option) => {
-//     option.addEventListener("click", () => {
-//       // get the selected time and remove "Minutes"
-//       const selectedTime = option.textContent.replace(' Minutes','');
+// if user clicks on 'update' button
+updateButton.addEventListener("click", (e) => {
+  var workTimeInput = document.getElementById("workTimeInput");
+  var breakTimeInput = document.getElementById("breakTimeInput");
+  var longBreakTimeInput = document.getElementById("longBreakTimeInput");
 
-//       // Update dropdown button
-//       btnElem.textContent =  timeType + "(" + selectedTime + ")";
-//     });
-//   });
-// }
+  var workTime = validateAndGetValue(workTimeInput);
+  var breakTime = validateAndGetValue(breakTimeInput);
+  var longBreakTime = validateAndGetValue(longBreakTimeInput);
+
+  console.log("Work Time:", workTime);
+  console.log("Break Time:", breakTime);
+  console.log("Long Break Time:", longBreakTime);
+});
+
