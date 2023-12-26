@@ -175,6 +175,14 @@ function validateAndGetValue(inputElement) {
   return value;
 }
 
+// update input text fields
+function updateInputText(inputTextField, timeValue){
+  if (timeValue !== "") {  
+    inputTextField.value = "";
+    inputTextField.placeholder = `Current: ${timeValue} (Min)`;
+  }
+}
+
 // if user clicks on 'start' button start timer
 startBtn.addEventListener("click", (e) => {
   runing = !runing;
@@ -188,7 +196,7 @@ startBtn.addEventListener("click", (e) => {
     // if paused
     pauseCycle();
   }
-});
+}); 
 
 // if user clicks on 'settings' button
 settingBtn.addEventListener("click", (e) => {
@@ -210,12 +218,16 @@ updateButton.addEventListener("click", (e) => {
   var breakTimeInput = document.getElementById("breakTimeInput");
   var longBreakTimeInput = document.getElementById("longBreakTimeInput");
 
-  var workTime = validateAndGetValue(workTimeInput);
-  var breakTime = validateAndGetValue(breakTimeInput);
-  var longBreakTime = validateAndGetValue(longBreakTimeInput);
+  var updatedWorkTime = validateAndGetValue(workTimeInput);
+  var updatedBreakTime = validateAndGetValue(breakTimeInput);
+  var updatedLongBreakTime = validateAndGetValue(longBreakTimeInput);
 
-  console.log("Work Time:", workTime);
-  console.log("Break Time:", breakTime);
-  console.log("Long Break Time:", longBreakTime);
+  updateInputText(workTimeInput, updatedWorkTime)
+  updateInputText(breakTimeInput, updatedBreakTime)
+  updateInputText(longBreakTimeInput, updatedLongBreakTime)
+
+  // update time variables in seconds
+  workTime = updatedWorkTime * 60;
+  breakTime = updatedBreakTime * 60;
+  longBreakTime = updatedLongBreakTime * 60;
 });
-
