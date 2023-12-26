@@ -180,6 +180,11 @@ function updateInputText(inputTextField, timeValue){
   if (timeValue !== "") {  
     inputTextField.value = "";
     inputTextField.placeholder = `Current: ${timeValue} (Min)`;
+    
+    // update time variables in seconds
+    workTime = updatedWorkTime * 60;
+    breakTime = updatedBreakTime * 60;
+    longBreakTime = updatedLongBreakTime * 60;
   }
 }
 
@@ -225,9 +230,4 @@ updateButton.addEventListener("click", (e) => {
   updateInputText(workTimeInput, updatedWorkTime)
   updateInputText(breakTimeInput, updatedBreakTime)
   updateInputText(longBreakTimeInput, updatedLongBreakTime)
-
-  // update time variables in seconds
-  workTime = updatedWorkTime * 60;
-  breakTime = updatedBreakTime * 60;
-  longBreakTime = updatedLongBreakTime * 60;
 });
