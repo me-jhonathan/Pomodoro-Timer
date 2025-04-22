@@ -29,7 +29,7 @@ p {
   justify-content: center;
 }
 #greenTomato {
-  background: url(/assets/green_tomato.svg) no-repeat center;
+  background: url(assets/green_tomato.svg) no-repeat center;
   background-size: contain;
   padding: 17vh 13vw;
   position: absolute;
