@@ -180,11 +180,6 @@ function updateInputText(inputTextField, timeValue){
   if (timeValue !== "") {  
     inputTextField.value = "";
     inputTextField.placeholder = `Current: ${timeValue} (Min)`;
-    
-    // update time variables in seconds
-    workTime = updatedWorkTime * 60;
-    breakTime = updatedBreakTime * 60;
-    longBreakTime = updatedLongBreakTime * 60;
   }
 }
 
@@ -209,6 +204,9 @@ settingBtn.addEventListener("click", (e) => {
     pauseCycle();
 
     topContainer.classList.toggle("flip");
+
+    const isFlipped = topContainer.classList.contains("flip");
+    document.getElementById("updateButton").classList.toggle("hidden", !isFlipped);
     // set button cool down
     settingBtn.disabled = true;
     setTimeout(function() {
@@ -227,7 +225,11 @@ updateButton.addEventListener("click", (e) => {
   var updatedBreakTime = validateAndGetValue(breakTimeInput);
   var updatedLongBreakTime = validateAndGetValue(longBreakTimeInput);
 
-  updateInputText(workTimeInput, updatedWorkTime)
-  updateInputText(breakTimeInput, updatedBreakTime)
-  updateInputText(longBreakTimeInput, updatedLongBreakTime)
+  if (updatedWorkTime !== "") workTime = updatedWorkTime * 60;
+  if (updatedBreakTime !== "") breakTime = updatedBreakTime * 60;
+  if (updatedLongBreakTime !== "") longBreakTime = updatedLongBreakTime * 60;
+
+  updateInputText(workTimeInput, updatedWorkTime);
+  updateInputText(breakTimeInput, updatedBreakTime);
+  updateInputText(longBreakTimeInput, updatedLongBreakTime);
 });
