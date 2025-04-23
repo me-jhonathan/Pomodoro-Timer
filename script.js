@@ -94,44 +94,36 @@ const countDown = () => {
   }, 1000);
 };
 
-// start work cycle
-function startWorkCycle() {
-  let randomIndex = Math.floor(Math.random() * 6);
-  timeLeft = workTime;
+function setCycleProperties(cycleName, time, sayings, title) {
+  let randomIndex = Math.floor(Math.random() * sayings.length);
+  timeLeft = time;
 
   // page properties
-  cycleTitle = "Work: "
-  caption.innerHTML = workSaying[randomIndex];
+  cycleTitle = title;
+  caption.innerHTML = sayings[randomIndex];
+  addCycleProperties(cycleName);
+}
+
+// start work cycle
+function startWorkCycle() {
+  setCycleProperties("startWork", workTime, workSaying, "Work: ");
   playIconStart.style.display = "none";
-  addCycleProperties("startWork");
 }
 
 // start break cycle
 function startBreakCycle() {
-  let randomIndex = Math.floor(Math.random() * 6);
-  timeLeft = breakTime;
-
-  // page properties
-  cycleTitle = "Break: ";
-  caption.innerHTML = breakSaying[randomIndex];
-  addCycleProperties("startBreak");
+  setCycleProperties("startBreak", breakTime, breakSaying, "Break: ");
 }
 
 // start long break cycle
 function startLongBreakCycle() {
-  let randomIndex = Math.floor(Math.random() * 6);
-  timeLeft = longBreakTime;
-
-  // page properties
-  cycleTitle = "Long Break: ";
-  caption.innerHTML = longBreakSaying[randomIndex];
-  addCycleProperties("startLongBreak");
+  setCycleProperties("startLongBreak", longBreakTime, longBreakSaying, "Long Break: ");
 }
 
 // pause cycle
 function pauseCycle() {
   // save current time
-  savedtimer = timeLeft !== null ? timeLeft: savedtimer; 
+  savedtimer = timeLeft !== null ? timeLeft : savedtimer;
 
   // page properties
   cycleTitle = "Paused: ";
