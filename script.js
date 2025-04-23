@@ -59,7 +59,7 @@ const countDown = () => {
       startWorkCycle();
 
     // start long break cycle
-    } else if (cycle === 6) {
+    } else if (cycle === 5) {
       startLongBreakCycle();
 
     // start break cycle  
@@ -76,7 +76,7 @@ const countDown = () => {
       clearInterval(timer);
       savedtimer = null;
       cycle++;
-      if (cycle === 7) {
+      if (cycle === 6) {
         cycle = 0;
       }
       countDown();
@@ -167,10 +167,10 @@ function validateAndGetValue(inputElement) {
     // if value is under 0 or is negative, set to 1
     inputElement.value = 1;
     return 1;
-  } else if (value > 90) {
-    // if value is over 90, set it to 90
-    inputElement.value = 90;
-    return 90;
+  } else if (value > 180) {
+    // if value is over 180, set it to 180
+    inputElement.value = 180;
+    return 180;
   }
   return value;
 }
@@ -232,4 +232,25 @@ updateButton.addEventListener("click", (e) => {
   updateInputText(workTimeInput, updatedWorkTime);
   updateInputText(breakTimeInput, updatedBreakTime);
   updateInputText(longBreakTimeInput, updatedLongBreakTime);
+
+  if (!runing) {
+    if (cycle === 0 || cycle === 2 || cycle === 4) {
+      timeLeft = workTime;
+    } else if (cycle === 5) {
+      timeLeft = longBreakTime;
+    } else {
+      timeLeft = breakTime;
+    }
+
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    time.innerHTML = zeroPad(minutes) + ":" + zeroPad(seconds);
+    document.querySelector("#title").innerHTML = cycleTitle + zeroPad(minutes) + ":" + zeroPad(seconds);
+  }
+
+  if (runing) {
+    clearInterval(timer);
+    savedtimer = null;
+    countDown();
+  }
 });
